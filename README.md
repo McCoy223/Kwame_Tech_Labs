@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kwame Tech Labs - Innovative Technology Solutions</title>
-    <link rel="stylesheet" href="/Kwame_Tech_Labs.github.io/style.css">
-    <link rel="stylesheet" href="/Kwame_Tech_Labs.github.io/responsive.css">
-    <link rel="stylesheet" href="/Kwame_Tech_Labs.github.io/logo.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="logo.css">
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <img src="/Kwame_Tech_Labs.github.io/Ken Tech.png" alt="Kwame Tech Labs Logo" class="logo">
+            <img src="Ken Tech.png" alt="Kwame Tech Labs Logo" class="logo">
         </div>
         <nav class="main-nav">
             <ul>
@@ -77,10 +77,10 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Kwame Tech Labs. All rights reserved.</p>
+        <p>&copy; 2024 Kwame Tech Labs. All rights reserved.</p>
     </footer>
 
-    <script src="/Kwame_Tech_Labs.github.io/hello.js"></script>
+    <script src="hello.js"></script>
 </body>
 </html>
 
