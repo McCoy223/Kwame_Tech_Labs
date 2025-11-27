@@ -8,15 +8,20 @@
     <link rel="stylesheet" href="styles/responsive.css">
     <link rel="stylesheet" href="styles/logo.css">
     <style>
-        /* Slideshow Styles */
+        /* Hero Section Slideshow Styles */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
         .slideshow {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            overflow: hidden;
         }
 
         .slide {
@@ -44,25 +49,48 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
-        /* Ensure content stays above slideshow */
-        body {
+        /* Ensure hero content stays above slideshow */
+        .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding-top: 20vh;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .cta-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #0056b3;
         }
     </style>
 </head>
 <body>
-    <!-- Background Slideshow -->
-    <div class="slideshow">
-        <div class="slide active" style="background-image: url('Assets/messi.jpg');"></div>
-        <div class="slide" style="background-image: url('Assets/efootball-2024.jpg');"></div>
-        <div class="slide" style="background-image: url('Assets/1efootball-2024.jpg');"></div>
-    </div>
-
     <header>
         <div class="logo-container">
             <img src="Assets/Ken Tech.png" alt="Kwame Tech Labs Logo" class="logo">
@@ -80,6 +108,13 @@
 
     <main>
         <section id="home" class="hero">
+            <!-- Slideshow only in hero section -->
+            <div class="slideshow">
+                <div class="slide active" style="background-image: url('Assets/messi.jpg');"></div>
+                <div class="slide" style="background-image: url('Assets/efootball-2024.jpg');"></div>
+                <div class="slide" style="background-image: url('Assets/1efootball-2024.jpg');"></div>
+            </div>
+            
             <div class="hero-content">
                 <h1>Welcome to Kwame Tech Labs</h1>
                 <p>Innovative Technology Solutions for the Modern World</p>
