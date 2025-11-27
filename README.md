@@ -4,14 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kwame Tech Labs - Innovative Technology Solutions</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
-    <link rel="stylesheet" href="logo.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/logo.css">
+    <style>
+        /* Hero Section Slideshow Styles */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Overlay to improve text readability */
+        .slideshow::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* Ensure hero content stays above slideshow */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding-top: 20vh;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .cta-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <img src="Ken Tech.png" alt="Kwame Tech Labs Logo" class="logo">
+            <img src="Assets/Ken Tech.png" alt="Kwame Tech Labs Logo" class="logo">
         </div>
         <nav class="main-nav">
             <ul>
@@ -26,6 +108,13 @@
 
     <main>
         <section id="home" class="hero">
+            <!-- Slideshow only in hero section -->
+            <div class="slideshow">
+                <div class="slide active" style="background-image: url('Assets/messi.jpg');"></div>
+                <div class="slide" style="background-image: url('Assets/efootball-2024.jpg');"></div>
+                <div class="slide" style="background-image: url('Assets/1efootball-2024.jpg');"></div>
+            </div>
+            
             <div class="hero-content">
                 <h1>Welcome to Kwame Tech Labs</h1>
                 <p>Innovative Technology Solutions for the Modern World</p>
@@ -80,7 +169,30 @@
         <p>&copy; 2024 Kwame Tech Labs. All rights reserved.</p>
     </footer>
 
-    <script src="hello.js"></script>
+    <script src="js/hello.js"></script>
+    <script>
+        // Slideshow functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+            
+            function nextSlide() {
+                // Remove active class from current slide
+                slides[currentSlide].classList.remove('active');
+                
+                // Move to next slide
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                // Add active class to next slide
+                slides[currentSlide].classList.add('active');
+            }
+            
+            // Change slide every 5 seconds
+            setInterval(nextSlide, 5000);
+            
+            // Initialize first slide
+            slides[currentSlide].classList.add('active');
+        });
+    </script>
 </body>
 </html>
-
