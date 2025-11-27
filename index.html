@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="styles/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Slideshow Styles */
-        .background-slideshow {
-            position: fixed;
+        /* Hero Slideshow Styles */
+        .hero-slideshow {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -42,26 +42,98 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
-        /* Ensure content stays above slideshow */
-        body {
+        /* Hero Section */
+        .hero {
             position: relative;
+            height: 100vh;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding-top: 20vh;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer Slideshow */
+        .footer-slideshow {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .footer-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .footer-slide.active {
+            opacity: 1;
+        }
+
+        .footer-slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
             z-index: 1;
+        }
+
+        .footer-slideshow-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .footer-slideshow-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-slideshow-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
 <body>
-    <!-- Background Slideshow -->
-    <div class="background-slideshow">
-        <div class="slide active" style="background-image: url('Assets/messi.jpg');"></div>
-        <div class="slide" style="background-image: url('Assets/efootball-2024.jpg');"></div>
-        <div class="slide" style="background-image: url('Assets/1efootball-2024.jpg');"></div>
-        <div class="slide-overlay"></div>
-    </div>
-
     <!-- Header & Navigation -->
     <header>
         <div class="container">
@@ -84,14 +156,22 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Slideshow -->
     <section class="hero" id="home">
+        <div class="hero-slideshow">
+            <div class="slide active" style="background-image: url('Assets/messi.jpg');"></div>
+            <div class="slide" style="background-image: url('Assets/efootball-2024.jpg');"></div>
+            <div class="slide" style="background-image: url('Assets/1efootball-2024.jpg');"></div>
+            <div class="slide-overlay"></div>
+        </div>
         <div class="container">
-            <h1>Creative Digital Experiences</h1>
-            <p>Kwame Tech Labs specializes in developing engaging games, innovative software solutions, and stunning graphic designs that captivate audiences and deliver results.</p>
-            <div class="hero-btns">
-                <a href="#portfolio" class="btn">View Our Work</a>
-                <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            <div class="hero-content">
+                <h1>Creative Digital Experiences</h1>
+                <p>Kwame Tech Labs specializes in developing engaging games, innovative software solutions, and stunning graphic designs that captivate audiences and deliver results.</p>
+                <div class="hero-btns">
+                    <a href="#portfolio" class="btn">View Our Work</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
             </div>
         </div>
     </section>
@@ -383,6 +463,21 @@
         </div>
     </section>
 
+    <!-- Footer Slideshow Section -->
+    <div class="footer-slideshow">
+        <div class="footer-slide active" style="background-image: url('Assets/messi.jpg');"></div>
+        <div class="footer-slide" style="background-image: url('Assets/efootball-2024.jpg');"></div>
+        <div class="footer-slide" style="background-image: url('Assets/1efootball-2024.jpg');"></div>
+        <div class="footer-slide-overlay"></div>
+        <div class="container">
+            <div class="footer-slideshow-content">
+                <h3>Ready to Start Your Project?</h3>
+                <p>Let's create something amazing together. Get in touch with us today and let's bring your ideas to life.</p>
+                <a href="#contact" class="btn">Contact Us Now</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -434,39 +529,43 @@
     </footer>
 
     <script>
-        // Slideshow functionality
+        // Slideshow functionality for both hero and footer
         document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.slide');
-            let currentSlide = 0;
+            // Hero slideshow
+            const heroSlides = document.querySelectorAll('.hero-slideshow .slide');
+            let currentHeroSlide = 0;
             
-            function nextSlide() {
-                // Remove active class from current slide
-                slides[currentSlide].classList.remove('active');
-                
-                // Move to next slide
-                currentSlide = (currentSlide + 1) % slides.length;
-                
-                // Add active class to next slide
-                slides[currentSlide].classList.add('active');
+            function nextHeroSlide() {
+                heroSlides[currentHeroSlide].classList.remove('active');
+                currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+                heroSlides[currentHeroSlide].classList.add('active');
             }
             
-            // Change slide every 5 seconds
-            setInterval(nextSlide, 5000);
+            // Footer slideshow
+            const footerSlides = document.querySelectorAll('.footer-slideshow .footer-slide');
+            let currentFooterSlide = 0;
             
-            // Initialize first slide
-            slides[currentSlide].classList.add('active');
-        });
+            function nextFooterSlide() {
+                footerSlides[currentFooterSlide].classList.remove('active');
+                currentFooterSlide = (currentFooterSlide + 1) % footerSlides.length;
+                footerSlides[currentFooterSlide].classList.add('active');
+            }
+            
+            // Change slides every 5 seconds
+            setInterval(nextHeroSlide, 5000);
+            setInterval(nextFooterSlide, 5000);
+            
+            // Initialize slides
+            heroSlides[currentHeroSlide].classList.add('active');
+            footerSlides[currentFooterSlide].classList.add('active');
 
-        // Simple filter functionality
-        document.addEventListener('DOMContentLoaded', function() {
+            // Portfolio filter functionality
             const filterBtns = document.querySelectorAll('.filter-btn');
             const portfolioItems = document.querySelectorAll('.portfolio-item');
             
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
                     filterBtns.forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked button
                     this.classList.add('active');
                     
                     const filter = this.getAttribute('data-filter');
