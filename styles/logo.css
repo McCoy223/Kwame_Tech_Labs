@@ -1,0 +1,23 @@
+/* Updated Logo Styles for Image */
+.logo-img {
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--dark);
+}
+
+/* For responsive design - hide text on very small screens */
+@media (max-width: 480px) {
+    .logo-text {
+        display: none;
+    }
+
+    .logo-img {
+        margin-right: 0;
+    }
+}
