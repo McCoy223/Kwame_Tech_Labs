@@ -1,85 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kwame Tech Labs - Innovative Technology Solutions</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/responsive.css">
-    <link rel="stylesheet" href="styles/logo.css">
-</head>
-<body>
-    <header>
-        <div class="logo-container">
-            <img src="Assets/Ken Tech.png" alt="Kwame Tech Labs Logo" class="logo">
-        </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    .slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Welcome to Kwame Tech Labs</h1>
-                <p>Innovative Technology Solutions for the Modern World</p>
-                <button class="cta-button" onclick="showWelcome()">Get Started</button>
-            </div>
-        </section>
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
-        <section id="services" class="services">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Web Development</h3>
-                    <p>Custom websites and web applications built with modern technologies.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Mobile Apps</h3>
-                    <p>iOS and Android applications designed for optimal user experience.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Cloud Solutions</h3>
-                    <p>Scalable cloud infrastructure and deployment solutions.</p>
-                </div>
-            </div>
-        </section>
+    .slide.active {
+        opacity: 1;
+    }
 
-        <section id="projects" class="projects">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>E-Sports Platform</h3>
-                    <p>Gaming tournament management system</p>
-                </div>
-                <div class="project-card">
-                    <h3>Mobile Gaming App</h3>
-                    <p>Real-time multiplayer gaming application</p>
-                </div>
-            </div>
-        </section>
+    /* Overlay to improve text readability */
+    .slideshow::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
 
-        <section id="contact" class="contact">
-            <h2>Contact Us</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-    </main>
+    /* Ensure hero content stays above slideshow */
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: white;
+        padding-top: 20vh;
+    }
 
-    <footer>
-        <p>&copy; 2024 Kwame Tech Labs. All rights reserved.</p>
-    </footer>
+    .hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
 
-    <script src="js/hello.js"></script>
-</body>
-</html>
+    .hero-content p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .cta-button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+        background: #0056b3;
+    }
+</style>
